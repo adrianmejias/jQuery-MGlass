@@ -1,6 +1,6 @@
 /**
- * jQuery Umage Magnifier Plugin, displays a magnifying glass (or other image) as an overlay on a image hover
- * http://github.com/younes0/jQuery-Image-Magnifier
+ * jQuery MGlass, Displays a magnifying glass on image hover
+ * http://github.com/younes0/jQuery-MGlass
  * 
  * Version 1.0
  *  
@@ -14,7 +14,7 @@
 (function($) {
 
 	// Start
-    $.imageMagnifier = function(element, options) {
+    $.mglass = function(element, options) {
 
 		// Defaults
        var defaults = {
@@ -34,9 +34,9 @@
 			var h = $element.css("height");
 			var w = $element.css("width");		
 
-			$element.wrap('<div class="imageMagnifierWrapper" />')
+			$element.wrap('<div class="mglassWrapper" />')
 
-			$('<div class="imageMagnifier" style="width: '+w+'; height: '+h+'"></div>')
+			$('<div class="mglass" style="width: '+w+'; height: '+h+'"></div>')
 				.insertBefore($(element))
 				.hover(
 					function () {
@@ -55,11 +55,11 @@
     }
 
     // Add the plugin to the jQuery.fn object
-    $.fn.imageMagnifier = function(options) {
+    $.fn.mglass = function(options) {
         return this.each(function() {
-            if (undefined == $(this).data('imageMagnifier')) {
-                var plugin = new $.imageMagnifier(this, options);
-                $(this).data('imageMagnifier', plugin);
+            if (undefined == $(this).data('mglass')) {
+                var plugin = new $.mglass(this, options);
+                $(this).data('mglass', plugin);
             }
         });
     }
