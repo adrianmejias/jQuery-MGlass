@@ -1,5 +1,5 @@
 /**
- * jQuery Umage Magnifier Plugin, displays a magnifying glass (or other image) as an overlay on a image
+ * jQuery Umage Magnifier Plugin, displays a magnifying glass (or other image) as an overlay on a image hover
  * http://github.com/younes0/jQuery-Image-Magnifier
  * 
  * Version 1.0

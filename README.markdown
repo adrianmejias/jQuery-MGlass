@@ -3,7 +3,7 @@ jQuery Image Magnifier plugin
 
 ## Description
 
-Displays a magnifying glass (or other image) as an overlay on an image
+Displays a magnifying glass (or other image) as an overlay on an image hover
 
 [See the demo](http://younes.info/demos/image-magnifier/example.html)
 
