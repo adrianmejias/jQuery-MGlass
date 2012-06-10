@@ -4,6 +4,8 @@
  * 
  * Version 1.0
  *  
+ * TODO: add support for CSS3 transitions
+ * 
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *

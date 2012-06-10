@@ -32,7 +32,11 @@ To activate the plugin call `imageMagnifier` method with options on target jQuer
 **default**: 0.4
 
 Sets the opacity for the overlay
-  
+ 
+## TODO
 
+- Add support for CSS3 transitions  
+
+  
 Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) licenses.
 
