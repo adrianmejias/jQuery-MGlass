@@ -11,9 +11,9 @@ Displays a magnifying glass (or other image) as an overlay on an image
 
 In the header section of your page :
 
-<link href="jquery.imagemagnifier.css" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="jquery.imagemagnifier.js"></script>
+	<link href="jquery.imagemagnifier.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="jquery.imagemagnifier.js"></script>
 
 To activate the plugin call `imageMagnifier` method with options on target jQuery object. 
 
