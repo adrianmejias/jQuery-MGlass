@@ -1,0 +1,10 @@
+.imageMagnifier{
+	background-color   : #000;
+	background-image   : url(magnifier.png);
+	background-position: center;
+	background-repeat  : no-repeat;
+	cursor             : pointer;
+	opacity            : 0; 
+	position           : absolute;
+	z-index            : 10; 
+}
