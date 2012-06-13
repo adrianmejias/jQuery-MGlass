@@ -27,7 +27,7 @@ To activate the plugin call `mglass` method with options on target jQuery object
     });
     </script>
   
-**Chrome requirement**: you need to specify the image height & width CSS properties before 
+**Chrome requirement**: you need to specify the image height & width CSS properties 
 
 ## Options
 
@@ -44,7 +44,7 @@ Sets the opacity for the overlay
 Fadein / Fadeout speed in ms.  
 Set to 0 to disable animation.
 
-### wrapper (integer)
+### wrapper (boolean)
 
 **default**: true
 
