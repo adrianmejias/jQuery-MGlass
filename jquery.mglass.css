@@ -1,6 +1,6 @@
 .mglass{
 	background-color   : #000;
-	background-image   : url('../images/magnifier.png');
+	background-image   : url('magnifier.png');
 	background-position: center;
 	background-repeat  : no-repeat;
 	cursor             : pointer;
