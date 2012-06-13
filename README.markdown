@@ -3,7 +3,8 @@ jQuery MGlass
 
 ## Description
 
-Displays a magnifying glass on image hover
+Displays a magnifying glass on image hover.
+Fade animations with CSS3 or jQuery
 
 [See the demo](http://younes.info/demos/mglass/example.html)
 
@@ -33,11 +34,25 @@ To activate the plugin call `mglass` method with options on target jQuery object
 **default**: 0.4
 
 Sets the opacity for the overlay
- 
+
+### speed (integer)
+
+**default**: 0.4
+
+Fadein / Fadeout speed in ms.  
+Set to 0 to disable animation.
+
+### wrapper (integer)
+
+**default**: true
+
+Wraps the element in a div 
+
+
 ## TODO
 
-- Add support for CSS3 transitions  
-- CSS3 magnifying glass instead of image
-  
+- CSS3 magnifying glass instead of image ?
+
+
 Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) licenses.
 
