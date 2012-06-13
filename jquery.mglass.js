@@ -38,12 +38,10 @@
 
 			var 
 				h = $element.css("height"), 
-				w = $element.css("width"), 
-				p = $element.css("padding"),
-				bs = $element.css("border-height")
+				w = $element.css("width")
 			;
 
-			var overlayStyle = 'width: '+w+'; height: '+h+'; padding: '+p+'; border-size: '+bs+';'; 
+			var overlayStyle = 'width: '+w+'; height: '+h+';'; 
 
 			// CSS3 transition Support ?
 			if (typeof $.css3Transitions === 'undefined') {
