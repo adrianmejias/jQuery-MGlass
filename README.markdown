@@ -26,6 +26,8 @@ To activate the plugin call `mglass` method with options on target jQuery object
 
     });
     </script>
+  
+**Chrome requirement**: you need to specify the image height & width CSS properties before 
 
 ## Options
 

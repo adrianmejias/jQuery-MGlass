@@ -37,18 +37,18 @@
 			}
 
 			var 
-				h = $element.css("height"), 
-				w = $element.css("width")
+				h = $element.height(), 
+				w = $element.width()
 			;
 
-			var overlayStyle = 'width: '+w+'; height: '+h+';'; 
+			var overlayStyle = 'width: '+w+'px; height: '+h+'px;'; 
 
 			// CSS3 transition Support ?
 			if (typeof $.css3Transitions === 'undefined') {
 				$.css3Transitions = plugin.supportsTransitions();
 			}
 			if ($.css3Transitions) {
-					overlayStyle+= $.fn.mglass.transitionProperty+': opacity '+(plugin.settings.speed/1000)+'s ease;';
+				overlayStyle+= $.fn.mglass.transitionProperty+': opacity '+(plugin.settings.speed/1000)+'s ease;';
 			}
 
 			// Mglass Div
