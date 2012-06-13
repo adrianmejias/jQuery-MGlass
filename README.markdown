@@ -3,8 +3,8 @@ jQuery MGlass
 
 ## Description
 
-Displays a magnifying glass on image hover.
-Fade animations with CSS3 or jQuery
+Displays a magnifying glass on image hover.  
+Fading animations with CSS3 and jQuery fallback. 
 
 [See the demo](http://younes.info/demos/mglass/example.html)
 
