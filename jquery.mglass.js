@@ -17,14 +17,14 @@
 
 		// Defaults
        var defaults = {
-       		opacity: 0.4,
-       		speed: 150,
-       		wrapper: true
-       }
+			opacity: 0.4,
+			speed: 150,
+			wrapper: true
+       };
 	
         var plugin = this, $element = $(element);
 		
-		plugin.settings = {}
+		plugin.settings = {};
 		
 		
         // Constructor
@@ -78,30 +78,30 @@
 		    for (var i = 0, len = vendors.length; i < len; i++) {
 		        var prop = vendors[i] + 'Transition';
 		        if (prop in el.style) {
-		        	$.fn.mglass.transitionProperty = '-'+vendors[i].toLowerCase()+'-transition';
-		        	return true;
-		    	}
+					$.fn.mglass.transitionProperty = '-'+vendors[i].toLowerCase()+'-transition';
+					return true;
+				}
 		    }
 
 		    return false;
 
-		}
+		};
 
 
 		// Init
         plugin.init();
 
-    }
+    };
 
     // Add the plugin to the jQuery.fn object
     $.fn.mglass = function(options) {
         return this.each(function() {
-            if (undefined == $(this).data('mglass')) {
+            if ($(this).data('mglass') === undefined) {
                 var plugin = new $.mglass(this, options);
                 $(this).data('mglass', plugin);
             }
         });
-    }
+    };
 
 // End
 })(jQuery);

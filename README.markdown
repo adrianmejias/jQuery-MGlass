@@ -3,21 +3,21 @@ jQuery MGlass
 
 ## Description
 
-Displays a magnifying glass on image hover.  
+Simple jquery plugin that overlays on element hover a magnifying glass (or any other image).  
 Fading animations with CSS3 and jQuery fallback. 
 
 [See the demo](http://younes.info/demos/mglass/example.html)
 
 ## Usage
 
-In the header section of your page, write this :
+Write this in the header section :
 
 	<link href="jquery.mglass.css" rel="stylesheet">
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>	<script src="jquery.mglass.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="jquery.mglass.js"></script>
 
 
-To activate the plugin call `mglass` method with options on target jQuery object. 
+Then call the `mglass` method on a dom element :
 
     <script type="text/javascript">
     $(function(){
@@ -39,10 +39,9 @@ Sets the opacity for the overlay
 
 ### speed (integer)
 
-**default**: 0.4
+**default**: 150
 
-Fadein / Fadeout speed in ms.  
-Set to 0 to disable animation.
+Fadein / Fadeout speed in ms. Set to 0 to disable animation.
 
 ### wrapper (boolean)
 
