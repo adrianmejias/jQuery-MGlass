@@ -1,34 +1,30 @@
 /**
  * jQuery MGlass, Displays a magnifying glass on image hover
- * http://github.com/younes0/jQuery-MGlass
- * 
- * Version 1.1
- *  
+ * http://github.com/younes0/jQuery-MGlass 
  * 
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *
- * 
  */
 (function($) {
 
 	// Start
-    $.mglass = function(element, options) {
+	$.mglass = function(element, options) {
 
 		// Defaults
-       var defaults = {
+		var defaults = {
 			opacity: 0.4,
 			speed: 150,
 			wrapper: true
-       };
+		};
 	
-        var plugin = this, $element = $(element);
+		var plugin = this, $element = $(element);
 		
 		plugin.settings = {};
 		
-		
-        // Constructor
-        plugin.init = function() {
+
+		// Constructor
+		plugin.init = function() {
 
 			plugin.settings = $.extend({}, defaults, options);
 						
@@ -38,10 +34,16 @@
 
 			var 
 				h = $element.height(), 
-				w = $element.width()
+				w = $element.width(),
+				b = $element.css('border-top-width')
 			;
 
 			var overlayStyle = 'width: '+w+'px; height: '+h+'px;'; 
+			
+			// if original image has border (border-top as reference), set width as margin
+			if (b) {
+				overlayStyle+= 'margin: '+b+';';
+			}
 
 			// CSS3 transition Support ?
 			if (typeof $.css3Transitions === 'undefined') {
@@ -56,7 +58,7 @@
 			$overlay.insertBefore($(element));
 
 			// No CSS3 transition support : javascript fallback
-			if (!$.css3Transitions) {
+			if ( ! $.css3Transitions) {
 				$overlay.hover(
 					function () {
 						$(this).stop().animate({"opacity": plugin.settings.opacity}, plugin.settings.speed);
@@ -75,33 +77,33 @@
 			var el      = document.createElement('div');
 			var vendors = ['', 'Ms', 'Moz', 'Webkit', 'O'];
 
-		    for (var i = 0, len = vendors.length; i < len; i++) {
-		        var prop = vendors[i] + 'Transition';
-		        if (prop in el.style) {
+			for (var i = 0, len = vendors.length; i < len; i++) {
+				var prop = vendors[i] + 'Transition';
+				if (prop in el.style) {
 					$.fn.mglass.transitionProperty = '-'+vendors[i].toLowerCase()+'-transition';
 					return true;
 				}
-		    }
+			}
 
-		    return false;
+			return false;
 
 		};
 
 
 		// Init
-        plugin.init();
+		plugin.init();
 
-    };
+	};
 
-    // Add the plugin to the jQuery.fn object
-    $.fn.mglass = function(options) {
-        return this.each(function() {
-            if ($(this).data('mglass') === undefined) {
-                var plugin = new $.mglass(this, options);
-                $(this).data('mglass', plugin);
-            }
-        });
-    };
+	// Add the plugin to the jQuery.fn object
+	$.fn.mglass = function(options) {
+		return this.each(function() {
+			if (undefined === $(this).data('mglass')) {
+				var plugin = new $.mglass(this, options);
+				$(this).data('mglass', plugin);
+			}
+		});
+	};
 
 // End
 })(jQuery);
