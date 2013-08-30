@@ -46,10 +46,7 @@
 			}
 
 			// CSS3 transition Support ?
-			if (typeof $.css3Transitions === 'undefined') {
-				$.css3Transitions = plugin.supportsTransitions();
-			}
-			if ($.css3Transitions) {
+			if ( plugin.supportsTransitions() ) {
 				overlayStyle+= $.fn.mglass.transitionProperty+': opacity '+(plugin.settings.speed/1000)+'s ease;';
 			}
 
@@ -58,9 +55,9 @@
 			$overlay.insertBefore($(element));
 
 			// No CSS3 transition support : javascript fallback
-			if ( ! $.css3Transitions) {
+			if ( !$.css3Transitions ) {
 
-				if (plugin.ieVersion() <= 8) {
+				if ( plugin.ieVersion() <= 8 ) {
 					$overlay.css({"opacity": 0});
 				}
 
@@ -79,35 +76,42 @@
 
 		plugin.supportsTransitions = function() {
 
-			var el      = document.createElement('div');
-			var vendors = ['', 'Ms', 'Moz', 'Webkit', 'O'];
+			if (typeof $.css3Transitions === 'undefined') {
+				var el      = document.createElement('div');
+				var vendors = ['', 'Ms', 'Moz', 'Webkit', 'O'];
 
-			for (var i = 0, len = vendors.length; i < len; i++) {
-				var prop = vendors[i] + 'Transition';
-				if (prop in el.style) {
-					$.fn.mglass.transitionProperty = '-'+vendors[i].toLowerCase()+'-transition';
-					return true;
+				for (var i = 0, len = vendors.length; i < len; i++) {
+					var prop = vendors[i] + 'Transition';
+					if (prop in el.style) {
+						$.fn.mglass.transitionProperty = '-'+vendors[i].toLowerCase()+'-transition';
+						$.css3Transitions = true;
+						break;
+					}
 				}
+
+				$.css3Transitions = false;
 			}
 
-			return false;
-
+			return $.css3Transitions;
 		};
 
 		plugin.ieVersion = function(){
 
-			var undef,
-				v = 3,
-				div = document.createElement('div'),
-				all = div.getElementsByTagName('i');
+			if (typeof $.ieVersion === 'undefined') {
+				var undef,
+					v = 3,
+					div = document.createElement('div'),
+					all = div.getElementsByTagName('i');
 
-			while (
-				div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
-				all[0]
-			);
+				while (
+					div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+					all[0]
+				);
 
-	    	return v > 4 ? v : undef;
+		    	$.ieVersion = v > 4 ? v : undef;
+			}
 
+			return $.ieVersion;
 		};
 
 		// Init
