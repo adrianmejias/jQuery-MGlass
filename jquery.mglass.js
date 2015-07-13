@@ -92,7 +92,7 @@
         return this.each(function() {
             if (undefined === $(this).data('mglass')) {
                 var plugin = new $.mglass(this, options);
-                $(this).data('mglass', plugin);
+                $(this).data('mglass', plugin).addClass('mglass-photo');
             }
         });
     };
