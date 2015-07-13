@@ -17,8 +17,8 @@
             large: 'example-large.jpg'
         };
         var plugin = this,
-            $element = $(element);
-        settings = {};
+            $element = $(element),
+            settings = {};
         settings = $.extend({}, defaults, options);
         settings.largeImage = $('<img>').attr('src', settings.large);
         var largeImage = new Image();
