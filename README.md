@@ -5,7 +5,7 @@ jQuery MGlass
 
 Simple jquery plugin that overlays on element hover a magnifying glass (or any other image).  
 
-[See the demo](http://younes.info/demos/mglass/example.html)
+[See the demo](https://adrianmejias.com/jQuery-MGlass/)
 
 ## Usage
 
