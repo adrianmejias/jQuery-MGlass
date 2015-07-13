@@ -1,0 +1,40 @@
+{
+	"name": "adrianmejias/jQuery-MGlass",
+	"description": "Simple jquery plugin that overlays on element hover a magnifying glass (or any other image).",
+	"keywords": [
+        "mglass",
+        "js",
+        "magnify",
+        "glass",
+        "image",
+        "jquery"
+	],
+	"homepage": "https://adrianmejias.com/jQuery-MGlass",
+	"authors": [
+        {
+        	"name": "YebSoft",
+        	"homepage": "http://www.yebsoft.com/)"
+        },
+        {
+        	"name": "younes0",
+        	"homepage": "https://github.com/younes0/jQuery-MGlass)"
+        },
+		{
+			"name": "Adrian Mejias",
+			"email": "adrianmejias@gmail.com",
+			"homepage": "https://adrianmejias.com"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/adrianmejias/jQuery-MGlass/issues"
+	},
+	"license": "MIT",
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.0.1"
+		}
+	},
+	"replace": {
+		"adrianmejias/jQuery-MGlass": "self.version"
+	}
+}
