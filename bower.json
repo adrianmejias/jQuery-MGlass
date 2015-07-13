@@ -11,6 +11,11 @@
         "jquery"
     ],
     "homepage": "https://adrianmejias.com/jQuery-MGlass",
+    "authors": [
+        "YebSoft (http://www.yebsoft.com/)",
+        "younes0 (https://github.com/younes0/jQuery-MGlass)",
+        "Adrian Mejias (https://adrianmejias.com)"
+    ],
     "main": [
         "jquery.mglass.css",
         "jquery.mglass.js",
