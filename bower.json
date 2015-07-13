@@ -1,7 +1,7 @@
 {
     "name": "jQuery-MGlass",
     "description": "Simple jquery plugin that overlays on element hover a magnifying glass (or any other image).",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": [
         "mglass",
         "js",
