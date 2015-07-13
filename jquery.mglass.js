@@ -17,9 +17,10 @@
             large: 'example-large.jpg'
         };
         var plugin = this,
-            $element = $(element);
-        settings = {};
+            $element = $(element),
+            settings = {};
         settings = $.extend({}, defaults, options);
+        // Create Image
         settings.largeImage = $('<img>').attr('src', settings.large);
         var largeImage = new Image();
         largeImage.src = settings.large;
@@ -28,7 +29,7 @@
             h = $element.height(),
             b = $element.css('border-top-width');
         // Wrapper
-        $element.wrap($('<div>').addClass('mglass-wrapper').css({
+        $element.addClass('mglass-photo').wrap($('<div>').addClass('mglass-wrapper').css({
             width: parseInt(w) + 'px',
             height: parseInt(h) + 'px'
         }).mousemove(function(e) {
@@ -84,13 +85,14 @@
             width: parseInt(w) + 'px',
             height: parseInt(h) + 'px'
         })).parent().parent().prepend($('<div>').addClass('mglass-viewer').css('background-image', 'url(' + settings.large + ')'));
+        return true;
     };
     // Add the plugin to the jQuery.fn object
     $.fn.mglass = function(options) {
         return this.each(function() {
             if (undefined === $(this).data('mglass')) {
                 var plugin = new $.mglass(this, options);
-                $(this).data('mglass', plugin);
+                $(this).data('mglass', plugin).addClass('mglass-photo');
             }
         });
     };
