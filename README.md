@@ -20,10 +20,8 @@ Write this in the header section :
 Then call the `mglass` method on a dom element :
 
     <script type="text/javascript">
-    $(function(){
-
-    	$("img").mglass();
-
+    $(function() {
+    	$('img').mglass();
     });
     </script>
   

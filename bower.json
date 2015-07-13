@@ -17,17 +17,24 @@
         "Adrian Mejias (https://adrianmejias.com)"
     ],
     "main": [
+        "jquery.mglass.min.css",
+        "jquery.mglass.min.js",
         "jquery.mglass.css",
         "jquery.mglass.js",
         "magnifier.png"
     ],
     "ignore": [
         "example.html",
+        "example.css",
         "example.jpg",
         "composer.json",
         "README.md"
     ],
     "dependencies": {
         "jquery": ">= 1.11.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/adrianmejias/jQuery-MGlass.git"
     }
 }

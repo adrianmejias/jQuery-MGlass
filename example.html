@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link href="jquery.mglass.css" rel="stylesheet">
-	<style>
-		img{
-			width: 300px;
-			height: 225px;
-		}
-	</style>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="jquery.mglass.js"></script>
-</head>
-<body>
-
-<img src="example.jpg">
-
-<script>
-	$("img").mglass({
-		opacity: 0.5
-	});
-</script>
-
-</body>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<link href="example.css" rel="stylesheet">
+		<link href="jquery.mglass.css" rel="stylesheet">
+	</head>
+	<body>
+		<p>
+			<img src="example.jpg">
+		</p>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="jquery.mglass.js"></script>
+		<script>
+		$(function() {
+			$('img').mglass({
+				large: 'example-large.jpg'
+			});
+		});
+		</script>
+	</body>
 </html>
-

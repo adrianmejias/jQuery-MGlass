@@ -1,133 +1,98 @@
 /**
  * jQuery MGlass, Displays a magnifying glass on image hover
- * http://github.com/younes0/jQuery-MGlass 
- * 
+ * https://github.com/younes0/jQuery-MGlass
+ *
+ * Updated
+ * https://github.com/adrianmejias/jQuery-MGlass
+ *
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *
  */
 (function($) {
-
-	// Start
-	$.mglass = function(element, options) {
-
-		// Defaults
-		var defaults = {
-			opacity: 0.4,
-			speed: 150,
-			wrapper: true
-		};
-	
-		var plugin = this, $element = $(element);
-		
-		plugin.settings = {};
-		
-
-		// Constructor
-		plugin.init = function() {
-
-			plugin.settings = $.extend({}, defaults, options);
-						
-			if (plugin.settings.wrapper) {
-				$element.wrap('<div class="mglassWrapper" />');
-			}
-
-			var 
-				h = $element.height(), 
-				w = $element.width(),
-				b = $element.css('border-top-width')
-			;
-
-			var overlayStyle = 'width: '+w+'px; height: '+h+'px;'; 
-			
-			// if original image has border (border-top as reference), set width as margin
-			if (b) {
-				overlayStyle+= 'margin: '+b+';';
-			}
-
-			// CSS3 transition Support ?
-			if ( plugin.supportsTransitions() ) {
-				overlayStyle+= $.fn.mglass.transitionProperty+': opacity '+(plugin.settings.speed/1000)+'s ease;';
-			}
-
-			// Mglass Div
-			$overlay = $('<div class="mglass" style="'+overlayStyle+'"></div>');
-			$overlay.insertBefore($(element));
-
-			// No CSS3 transition support : javascript fallback
-			if ( !$.css3Transitions ) {
-
-				if ( plugin.ieVersion() <= 8 ) {
-					$overlay.css({"opacity": 0});
-				}
-
-				$overlay.hover(
-					function () {
-						$(this).css({"opacity": 0}).stop().animate({"opacity": plugin.settings.opacity}, plugin.settings.speed);
-					},
-					function () {
-						$(this).stop().animate({"opacity": 0}, 100);
-					}
-				);
-
-			}
-		
-		},
-
-		plugin.supportsTransitions = function() {
-
-			if (typeof $.css3Transitions === 'undefined') {
-				var el      = document.createElement('div');
-				var vendors = ['', 'Ms', 'Moz', 'Webkit', 'O'];
-
-				for (var i = 0, len = vendors.length; i < len; i++) {
-					var prop = vendors[i] + 'Transition';
-					if (prop in el.style) {
-						$.fn.mglass.transitionProperty = '-'+vendors[i].toLowerCase()+'-transition';
-						$.css3Transitions = true;
-						break;
-					}
-				}
-
-				$.css3Transitions = false;
-			}
-
-			return $.css3Transitions;
-		};
-
-		plugin.ieVersion = function(){
-
-			if (typeof $.ieVersion === 'undefined') {
-				var undef,
-					v = 3,
-					div = document.createElement('div'),
-					all = div.getElementsByTagName('i');
-
-				while (
-					div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
-					all[0]
-				);
-
-		    	$.ieVersion = v > 4 ? v : undef;
-			}
-
-			return $.ieVersion;
-		};
-
-		// Init
-		plugin.init();
-
-	};
-
-	// Add the plugin to the jQuery.fn object
-	$.fn.mglass = function(options) {
-		return this.each(function() {
-			if (undefined === $(this).data('mglass')) {
-				var plugin = new $.mglass(this, options);
-				$(this).data('mglass', plugin);
-			}
-		});
-	};
-
-// End
+    // Start
+    $.mglass = function(element, options) {
+        // Defaults
+        var defaults = {
+            large: 'example-large.jpg'
+        };
+        var plugin = this,
+            $element = $(element);
+        settings = {};
+        settings = $.extend({}, defaults, options);
+        settings.largeImage = $('<img>').attr('src', settings.large);
+        var largeImage = new Image();
+        largeImage.src = settings.large;
+        // Init
+        var w = $element.width(),
+            h = $element.height(),
+            b = $element.css('border-top-width');
+        // Wrapper
+        $element.wrap($('<div>').addClass('mglass-wrapper').css({
+            width: parseInt(w) + 'px',
+            height: parseInt(h) + 'px'
+        }).mousemove(function(e) {
+            var mglassViewer = $(this).find('.mglass-viewer'),
+                img = $(this).find('img'),
+                pageOffset = {
+                    x: $('body').offset().left,
+                    y: $('body').offset().top
+                },
+                imagePosition = {
+                    x: $(img).offset().left,
+                    y: $(img).offset().top
+                };
+            if (imagePosition.x <= (e.clientX + pageOffset.x) &&
+                imagePosition.y <= (e.clientY + pageOffset.y) &&
+                (imagePosition.x + img.outerWidth()) >= (e.clientX + pageOffset.x) &&
+                (imagePosition.y + img.outerHeight()) >= (e.clientY + pageOffset.y)) {
+                var x = (e.clientX + pageOffset.x),
+                    y = (e.clientY + pageOffset.y);
+                mglassViewer.css({
+                    visibility: 'visible',
+                    left: (x - (mglassViewer.outerWidth() / 2)) + 'px',
+                    top: (y - (mglassViewer.outerHeight() / 2)) + 'px'
+                });
+                var srcX = x - imagePosition.x,
+                    srcY = y - imagePosition.y,
+                    dstX = (srcX * (largeImage.width - mglassViewer.outerWidth())) / img.outerWidth(),
+                    dstY = (srcY * (largeImage.height - mglassViewer.outerHeight())) / img.outerHeight();
+                mglassViewer.css('background-position', (-dstX) + 'px ' + (-dstY) + 'px');
+            } else {
+                mglassViewer.css('visibility', 'hidden');
+            }
+        }).hover(function(e) {
+            // ..
+        }, function(e) {
+            var mglassViewer = $(this).find('.mglass-viewer'),
+                img = $(this).find('img'),
+                pageOffset = {
+                    x: $('body').offset().left,
+                    y: $('body').offset().top
+                },
+                imagePosition = {
+                    x: $(img).offset().left,
+                    y: $(img).offset().top
+                };
+            if (!(imagePosition.x <= (e.clientX + pageOffset.x) &&
+                imagePosition.y <= (e.clientY + pageOffset.y) &&
+                imagePosition.x + img.outerWidth() >= (e.clientX + pageOffset.x) &&
+                imagePosition.y + img.outerHeight() >= (e.clientY + pageOffset.y))) {
+                mglassViewer.css('visibility', 'hidden');
+            }
+        })).wrap($('<div>').addClass('mglass-photo-box').css({
+            width: parseInt(w) + 'px',
+            height: parseInt(h) + 'px'
+        })).parent().parent().prepend($('<div>').addClass('mglass-viewer').css('background-image', 'url(' + settings.large + ')'));
+    };
+    // Add the plugin to the jQuery.fn object
+    $.fn.mglass = function(options) {
+        return this.each(function() {
+            if (undefined === $(this).data('mglass')) {
+                var plugin = new $.mglass(this, options);
+                $(this).data('mglass', plugin);
+            }
+        });
+    };
+    // End
 })(jQuery);
